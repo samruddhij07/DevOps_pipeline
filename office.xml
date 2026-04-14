@@ -1,0 +1,17 @@
+<project name= default= >
+
+	<property file="build.properties" />
+	
+	<target name="compile">
+		<mkdir dir="${builddir}/${classdir}" />
+		<javac src="${srcdir}" dest="${builddir}/${classdir}" includeantruntime="false" />
+	</target>
+
+	<target name="run" depends="compile">
+		<java classname="OfficeManager" fork="true">
+			<classpath>
+				<pathelement path="${builddir}/${classdir}" />
+			</classpath>
+		</java>
+	</target>
+</project>
