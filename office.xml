@@ -3,6 +3,7 @@
 	<property file="build.properties" />
 
 	<property name="sonar.host.url" value="http://localhost:9000" />
+	<property name="sonar.login" value="squ_2a385f374dc063f8df14cca2a075be392b9132dc" />
 	<property name="sonar.projectKey" value="office_management_system" />
 	<property name="sonar.projectName" value="Office Management Project" />
 	<property name="sonar.projectVersion" value="1.0" />
