@@ -24,7 +24,7 @@
 
 	<target name="test" depends="compile">
 		<mkdir dir="test-reports" />
-		<junit printsummary="yes" haltonfailure="yes >
+		<junit printsummary="yes" haltonfailure="yes" >
 			<classpath refid="junit.classpath" />
 			<formatter type="plain" />
 			<batchtest todir="test-reports">
