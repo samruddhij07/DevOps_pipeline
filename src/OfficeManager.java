@@ -22,4 +22,10 @@ public class OfficeManager {
     public int getCurrentEmployees() {
         return currentEmployees;
     }
+
+    // ADD THIS SO THE "RUN" TARGET WORKS
+    public static void main(String[] args) {
+        OfficeManager om = new OfficeManager("Pune_HQ", 40);
+        System.out.println(om.getOfficeStatus());
+    }
 }
