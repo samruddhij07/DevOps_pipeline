@@ -1,4 +1,4 @@
-<project name= default= >
+<project name="office_mngt" default="run" basedir="." >
 
 	<property file="build.properties" />
 	
