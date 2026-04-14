@@ -1,10 +1,15 @@
 <project name="office_mngt" default="run" basedir="." >
 
 	<property file="build.properties" />
+
+	<target name="clean">
+		<delete dir="${builddir}" />
+		<delete dir="${jarddir}" />
+	</target>
 	
 	<target name="compile">
 		<mkdir dir="${builddir}/${classdir}" />
-		<javac src="${srcdir}" dest="${builddir}/${classdir}" includeantruntime="false" />
+		<javac srcdir="${srcdir}" destdir="${builddir}/${classdir}" includeantruntime="false" />
 	</target>
 
 	<target name="run" depends="compile">
