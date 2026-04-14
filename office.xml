@@ -2,14 +2,37 @@
 
 	<property file="build.properties" />
 
+	<path id="junit.classpath">
+		<pathelement path="${builddir}/${classdir}" />
+		<fileset dir = "lib">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
 	<target name="clean">
 		<delete dir="${builddir}" />
 		<delete dir="${jarddir}" />
+		<delete dir="test-reports" />
 	</target>
 	
-	<target name="compile">
+	<target name="compile" depends="clean">
 		<mkdir dir="${builddir}/${classdir}" />
-		<javac srcdir="${srcdir}" destdir="${builddir}/${classdir}" includeantruntime="false" />
+		<javac srcdir="${srcdir}" destdir="${builddir}/${classdir}" includeantruntime="false" >
+			<classpath refid="junit.classpath" />
+		</javac>
+	</target>
+
+	<target name="test" depends="compile">
+		<mkdir dir="test-reports" />
+		<junit printsummary="yes" haltonfailure="yes >
+			<classpath refid="junit.classpath" />
+			<formatter type="plain" />
+			<batchtest todir="test-reports">
+				<fileset dir="${srcdir}">
+					<include name="**/*Test.java" />
+				</fileset>
+			</batchtest>
+		</junit>
 	</target>
 
 	<target name="run" depends="compile">
