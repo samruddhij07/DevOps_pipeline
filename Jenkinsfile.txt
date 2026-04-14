@@ -1,0 +1,53 @@
+pipeline{
+	agent { label 'slave_agent1' }
+
+	stages{
+		stage('Checkout'){
+			steps{
+				checkout scm
+			}
+		}
+
+		stage('Clean'){
+			steps{
+				bat "ant -f office.xml clean"
+			}
+		}
+	
+		stage('Compile'){
+			steps{
+				bat "ant -f office.xml compile"
+			}
+		}
+
+		stage('Run'){
+			steps{
+				bat "ant -f office.xml run"
+			}
+		}	
+	
+	}
+	
+	post{
+		success{
+			echo "Build successfully!"
+		}
+		failure{
+			echo "Build failed. Check console for errors."
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
