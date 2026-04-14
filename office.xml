@@ -1,6 +1,13 @@
-<project name="office_mngt" default="run" basedir="." >
+<project name="office_mngt" default="run" basedir="." xmlns:sonar="antlib:org.sonar.ant">
 
 	<property file="build.properties" />
+
+	<property name="sonar.host.url" value="http://localhost:9000" />
+	<property name="sonar.projectKey" value="office_management_system" />
+	<property name="sonar.projectName" value="Office Management Project" />
+	<property name="sonar.projectVersion" value="1.0" />
+	<property name="sonar.sources" value="${srcdir}" />
+	<property name="sonar.java.binaries" value="${builddir}/${classdir}" />
 
 	<path id="junit.classpath">
 		<pathelement path="${builddir}/${classdir}" />
@@ -20,6 +27,15 @@
 		<javac srcdir="${srcdir}" destdir="${builddir}/${classdir}" includeantruntime="false" >
 			<classpath refid="junit.classpath" />
 		</javac>
+	</target>
+
+	<target name="sonar" depends="compile">
+		<taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
+			<classpath>
+				<fileset dir="lib" includes="sonarqube-ant-task-*.jar" />
+			</classpath>
+		</taskdef>
+		<sonar:sonar/>
 	</target>
 
 	<target name="test" depends="compile">
