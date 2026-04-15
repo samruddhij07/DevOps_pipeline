@@ -44,6 +44,7 @@ pipeline{
 					bat "ant -f office.xml sonar"
 				}
 			}
+		}
 
 		stage('Docker'){
 			steps{
