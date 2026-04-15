@@ -50,9 +50,6 @@ pipeline{
 				bat "docker-compose up -d --build"
 			}
 		}
-
-		}	
-	
 	}
 	
 	post{
