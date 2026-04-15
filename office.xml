@@ -28,6 +28,15 @@
 		</javac>
 	</target>
 
+	<target name="package" depends="compile">
+		<mkdir dir="${jardir}" />
+		<jar destfile="${jardir}/${ant.project.name}.jar" basedir="${builddir}/{classdir}">
+			<manifest>
+				<attribute name="Main-Class" value="OfficeManager" />
+			</manifest>
+		</jar>
+	</target>
+
 	<target name="sonar" depends="compile">
 		<taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
 			<classpath>

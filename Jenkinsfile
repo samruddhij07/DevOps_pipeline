@@ -20,6 +20,12 @@ pipeline{
 			}
 		}
 
+		stage('Package'){
+			steps{
+				bat "ant -f office.xml jar"
+			}
+		}
+
 		stage('Test'){
 			steps{
 				bat "ant -f office.xml test"
