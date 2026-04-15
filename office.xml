@@ -30,7 +30,7 @@
 
 	<target name="package" depends="compile">
 		<mkdir dir="${jardir}" />
-		<jar destfile="${jardir}/${ant.project.name}.jar" basedir="${builddir}/{classdir}">
+		<jar destfile="${jardir}/${ant.project.name}.jar" basedir="${builddir}/${classdir}">
 			<manifest>
 				<attribute name="Main-Class" value="OfficeManager" />
 			</manifest>
