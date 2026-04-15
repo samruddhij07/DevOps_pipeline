@@ -40,10 +40,17 @@ pipeline{
 
 		stage('SonarQube Analysis'){
 			steps{
-				withSonarQubeEnv('SonarQube'){
+				withSonarQubeEnv('SonarServer'){
 					bat "ant -f office.xml sonar"
 				}
 			}
+
+		stage('Docker'){
+			steps{
+				bat "docker-compose up -d --build"
+			}
+		}
+
 		}	
 	
 	}
