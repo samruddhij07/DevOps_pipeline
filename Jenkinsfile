@@ -22,7 +22,7 @@ pipeline{
 
 		stage('Package'){
 			steps{
-				bat "ant -f office.xml jar"
+				bat "ant -f office.xml package"
 			}
 		}
 
